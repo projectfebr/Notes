@@ -11,30 +11,50 @@
         <!--Add-->
         <scene sceneID="eLr-3S-rIe">
             <objects>
-                <viewController title="Add" id="cmC-yO-pic" sceneMemberID="viewController">
+                <viewController title="Add" id="cmC-yO-pic" customClass="AddViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TnT-1U-2AU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-Ch-wJt">
-                                <rect key="frame" x="0.0" y="107.5" width="414" height="639"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="150"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-gz-JKf">
+                                <rect key="frame" x="146" y="432.5" width="122" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Начать запись"/>
+                                <connections>
+                                    <action selector="onTapRecordButton:" destination="cmC-yO-pic" eventType="touchUpInside" id="4ef-rT-Wro"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THi-qG-9CQ">
+                                <rect key="frame" x="20" y="88" width="374" height="161"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="161" id="Gm6-Zi-2B6"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ca6-CS-cdh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cj7-Ch-wJt" firstAttribute="leading" secondItem="ca6-CS-cdh" secondAttribute="leading" id="UeQ-0G-Od8"/>
-                            <constraint firstItem="ca6-CS-cdh" firstAttribute="bottom" secondItem="cj7-Ch-wJt" secondAttribute="bottom" id="fiT-HC-UyQ"/>
-                            <constraint firstItem="cj7-Ch-wJt" firstAttribute="top" secondItem="ca6-CS-cdh" secondAttribute="top" id="fnr-d7-UYO"/>
-                            <constraint firstItem="ca6-CS-cdh" firstAttribute="trailing" secondItem="cj7-Ch-wJt" secondAttribute="trailing" id="jR5-Ek-byj"/>
+                            <constraint firstItem="S8u-gz-JKf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="THi-qG-9CQ" secondAttribute="bottom" constant="20" id="3B4-TC-LKI"/>
+                            <constraint firstItem="S8u-gz-JKf" firstAttribute="centerX" secondItem="TnT-1U-2AU" secondAttribute="centerX" id="aab-di-rj7"/>
+                            <constraint firstItem="THi-qG-9CQ" firstAttribute="top" secondItem="ca6-CS-cdh" secondAttribute="top" id="mgD-cN-4GO"/>
+                            <constraint firstItem="ca6-CS-cdh" firstAttribute="trailing" secondItem="THi-qG-9CQ" secondAttribute="trailing" constant="20" id="n8O-bn-YH6"/>
+                            <constraint firstItem="S8u-gz-JKf" firstAttribute="centerY" secondItem="TnT-1U-2AU" secondAttribute="centerY" priority="999" id="vpU-t0-2Lj"/>
+                            <constraint firstItem="THi-qG-9CQ" firstAttribute="leading" secondItem="ca6-CS-cdh" secondAttribute="leading" constant="20" id="zti-Y7-oJh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add" id="1TN-T9-8Us"/>
+                    <connections>
+                        <outlet property="recordButton" destination="S8u-gz-JKf" id="Cb5-li-Vhy"/>
+                        <outlet property="textview" destination="THi-qG-9CQ" id="UNC-BV-zXa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S2-pT-8Vv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="1219"/>
+            <point key="canvasLocation" x="-810.14492753623199" y="1218.75"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="CEu-TG-2zV">
@@ -152,7 +172,6 @@
         <!--New-->
         <scene sceneID="GEJ-S9-GNh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9me-fp-2El" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="SwF-Tq-eEp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New" image="plus" catalog="system" id="GAo-kk-96k"/>
                     <toolbarItems/>
@@ -165,6 +184,7 @@
                         <segue destination="cmC-yO-pic" kind="relationship" relationship="rootViewController" id="BHJ-p9-rrr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9me-fp-2El" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-810" y="525"/>
         </scene>
@@ -173,6 +193,9 @@
         <image name="play.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
