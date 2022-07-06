@@ -14,8 +14,7 @@ class AddViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
 
-
-    @IBOutlet weak var textview: UITextView!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var recordButton: UIButton! {
         didSet {
             recordButton.isEnabled = false
@@ -84,13 +83,15 @@ class AddViewController: UIViewController {
 
         recognitionRequest.shouldReportPartialResults = true
 
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { [self]
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { [weak self]
             result, error in
+
+            guard let self = self else { return }
 
             var isFinal = false
 
             if result != nil {
-                self.textview.text = result?.bestTranscription.formattedString
+                self.textView.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
 
@@ -117,17 +118,13 @@ class AddViewController: UIViewController {
         do {
             try audioEngine.start()
         } catch {
-            fatalError("AudioEngene не запускается")
+            fatalError("AudioEngine не запускается")
         }
     }
 }
 
 extension AddViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            recordButton.isEnabled = true
-        } else {
-            recordButton.isEnabled = false
-        }
+        recordButton.isEnabled = available
     }
 }

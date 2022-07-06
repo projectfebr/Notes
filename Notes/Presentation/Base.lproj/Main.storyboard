@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Add" id="1TN-T9-8Us"/>
                     <connections>
                         <outlet property="recordButton" destination="S8u-gz-JKf" id="Cb5-li-Vhy"/>
-                        <outlet property="textview" destination="THi-qG-9CQ" id="UNC-BV-zXa"/>
+                        <outlet property="textView" destination="THi-qG-9CQ" id="UNC-BV-zXa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3S2-pT-8Vv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
