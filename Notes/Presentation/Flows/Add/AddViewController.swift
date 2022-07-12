@@ -138,6 +138,6 @@ extension AddViewController: SFSpeechRecognizerDelegate {
 
 extension AddViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
-        self.imageView.image = image
+        imageView.image = image
     }
 }
