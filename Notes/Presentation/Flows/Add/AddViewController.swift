@@ -13,6 +13,7 @@ class AddViewController: UIViewController {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    private var imagePicker: ImagePicker!
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var recordButton: UIButton! {
@@ -20,10 +21,12 @@ class AddViewController: UIViewController {
             recordButton.isEnabled = false
         }
     }
+    @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSpeechRecognizer()
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
 
     @IBAction func onTapRecordButton(_ sender: Any) {
@@ -36,6 +39,10 @@ class AddViewController: UIViewController {
             startRecording()
             recordButton.setTitle("Остановить запись", for: .normal)
         }
+    }
+
+    @IBAction func onTapImageButton(_ sender: UIButton) {
+        imagePicker.present(from: sender)
     }
 
     private func setupSpeechRecognizer() {
@@ -126,5 +133,11 @@ class AddViewController: UIViewController {
 extension AddViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         recordButton.isEnabled = available
+    }
+}
+
+extension AddViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.imageView.image = image
     }
 }
