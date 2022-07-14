@@ -13,7 +13,6 @@ public protocol ImagePickerDelegate: AnyObject {
 }
 
 class ImagePicker: NSObject {
-    
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
@@ -35,7 +34,6 @@ class ImagePicker: NSObject {
         guard UIImagePickerController.isSourceTypeAvailable(type) else {
             return nil
         }
-        
         return UIAlertAction(title: title, style: .default) { [unowned self] _ in
             pickerController.sourceType = type
             presentationController?.present(self.pickerController, animated: true)
@@ -43,7 +41,6 @@ class ImagePicker: NSObject {
     }
     
     public func present(from sourceView: UIView) {
-        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if let action = self.action(for: .camera, title: "Сделать фото") {
@@ -66,13 +63,11 @@ class ImagePicker: NSObject {
     
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
-        
         delegate?.didSelect(image: image)
     }
 }
 
 extension ImagePicker: UIImagePickerControllerDelegate {
-    
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         pickerController(picker, didSelect: nil)
     }
