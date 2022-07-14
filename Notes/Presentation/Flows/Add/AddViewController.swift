@@ -23,10 +23,13 @@ class AddViewController: UIViewController {
     }
     @IBOutlet weak var imageView: UIImageView!
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSpeechRecognizer()
         imagePicker = ImagePicker(presentationController: self, delegate: self)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Создать", style: .plain, target: self, action: #selector(createData))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
     @IBAction func onTapRecordButton(_ sender: Any) {
@@ -44,6 +47,8 @@ class AddViewController: UIViewController {
     @IBAction func onTapImageButton(_ sender: UIButton) {
         imagePicker.present(from: sender)
     }
+
+    @objc func createData(){}
 
     private func setupSpeechRecognizer() {
         speechRecognizer?.delegate = self

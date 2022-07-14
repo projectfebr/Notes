@@ -25,6 +25,8 @@
 		1FF6A33028802D760022C16B /* DogsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A32E28802D760022C16B /* DogsProvider.swift */; };
 		1FF6A332288048460022C16B /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6A331288048460022C16B /* Gallery.storyboard */; };
 		1FF6A334288048910022C16B /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6A333288048910022C16B /* Add.storyboard */; };
+		1FF6A336288068510022C16B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A335288068510022C16B /* Note.swift */; };
+		1FF6A33A288068EC0022C16B /* NotesStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A338288068EC0022C16B /* NotesStorage.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		1FF6A32E28802D760022C16B /* DogsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsProvider.swift; sourceTree = "<group>"; };
 		1FF6A331288048460022C16B /* Gallery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gallery.storyboard; sourceTree = "<group>"; };
 		1FF6A333288048910022C16B /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
+		1FF6A335288068510022C16B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		1FF6A339288068EC0022C16B /* NotesStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesStorage.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAF228D285922640010227D /* Application */,
+				1FF6A337288068CF0022C16B /* Storage */,
 				1FF6A32C28802D760022C16B /* Entities */,
 				1FAF228F2859229A0010227D /* Presentation */,
 				1FAF228E285922740010227D /* Resources */,
@@ -187,8 +192,17 @@
 			children = (
 				1FF6A32D28802D760022C16B /* Dog.swift */,
 				1FF6A32E28802D760022C16B /* DogsProvider.swift */,
+				1FF6A335288068510022C16B /* Note.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		1FF6A337288068CF0022C16B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1FF6A338288068EC0022C16B /* NotesStorage.xcdatamodeld */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +284,9 @@
 				1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */,
 				1F2A19CA287ECFF100923847 /* GalleryViewController.swift in Sources */,
 				1FF6A326288019830022C16B /* TabledContentCollectionViewDelegate.swift in Sources */,
+				1FF6A336288068510022C16B /* Note.swift in Sources */,
 				1FAF227A2859222B0010227D /* AppDelegate.swift in Sources */,
+				1FF6A33A288068EC0022C16B /* NotesStorage.xcdatamodeld in Sources */,
 				1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */,
 				1FF6A32A288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift in Sources */,
 				1FF6A3242880197C0022C16B /* DefaultCollectionViewDelegate.swift in Sources */,
@@ -352,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -406,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -502,6 +518,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1FF6A338288068EC0022C16B /* NotesStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1FF6A339288068EC0022C16B /* NotesStorage.xcdatamodel */,
+			);
+			currentVersion = 1FF6A339288068EC0022C16B /* NotesStorage.xcdatamodel */;
+			path = NotesStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1FAF226E2859222B0010227D /* Project object */;
 }
