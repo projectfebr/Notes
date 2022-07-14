@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class GalleryViewController: UIViewController {
     private enum PresentationStyle: String, CaseIterable {
@@ -38,6 +39,8 @@ class GalleryViewController: UIViewController {
 
     private var datasource: [Dog] = DogsProvider.get()
 
+    var notes: [NSManagedObject] = []
+
     private var selectedStyle: PresentationStyle = .table {
         didSet { updatePresentationStyle() }
     }
@@ -48,6 +51,29 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: selectedStyle.buttonImage, style: .plain, target: self, action: #selector(changeContentLayout))
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+
+      //1
+      guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else { return }
+
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+
+      //2
+      let fetchRequest =
+        NSFetchRequest<NSManagedObject>(entityName: "NoteEntity")
+
+      //3
+      do {
+        notes = try managedContext.fetch(fetchRequest)
+          collectionView.reloadData()
+      } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+      }
     }
 
     private func setupCollectionView() {
@@ -76,13 +102,15 @@ class GalleryViewController: UIViewController {
 
 extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count
+        return notes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseID, for: indexPath) as! CollectionViewCell
-        let dog = datasource[indexPath.item]
-        cell.update(date: dog.date, image: dog.image)
+        let note = notes[indexPath.row]
+        let image = UIImage(data: note.value(forKey: "image") as! Data)
+        let date = note.value(forKey: "date") as! Date
+        cell.update(date: date, image: image)
         return cell
     }
 }

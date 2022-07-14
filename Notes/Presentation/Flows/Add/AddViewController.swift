@@ -7,6 +7,7 @@
 
 import UIKit
 import Speech
+import CoreData
 
 class AddViewController: UIViewController {
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
@@ -28,8 +29,8 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         setupSpeechRecognizer()
         imagePicker = ImagePicker(presentationController: self, delegate: self)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Создать", style: .plain, target: self, action: #selector(createData))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Создать", style: .plain, target: self, action: #selector(saveNote))
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
     @IBAction func onTapRecordButton(_ sender: Any) {
@@ -48,7 +49,26 @@ class AddViewController: UIViewController {
         imagePicker.present(from: sender)
     }
 
-    @objc func createData(){}
+    @objc func saveNote(){
+
+        let note = Note(image: imageView.image ?? UIImage(systemName: "photo")!, date: Date(), text: textView.text)
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return  }
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "NoteEntity", in: managedContext)!
+        let noteEntity = NSManagedObject(entity: entity, insertInto: managedContext)
+        noteEntity.setValue(note.date, forKey: "date")
+        noteEntity.setValue(note.image.jpegData(compressionQuality: 1), forKey: "image")
+        noteEntity.setValue(note.text, forKey: "text")
+
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
+    }
 
     private func setupSpeechRecognizer() {
         speechRecognizer?.delegate = self
