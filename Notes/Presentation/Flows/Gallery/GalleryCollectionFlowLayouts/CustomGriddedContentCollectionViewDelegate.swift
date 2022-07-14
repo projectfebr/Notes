@@ -1,6 +1,6 @@
 //
 //  CustomGriddedContentCollectionViewDelegate.swift
-//  CustomCollectionLayout
+//  Notes
 //
 //  Created by Maksym Husar on 2/16/19.
 //  Copyright © 2019 MaksymHusar. All rights reserved.

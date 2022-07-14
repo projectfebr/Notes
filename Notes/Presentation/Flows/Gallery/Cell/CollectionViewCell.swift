@@ -1,5 +1,5 @@
 //
-// ,e CollectionViewCell.swift
+//  CollectionViewCell.swift
 //  Notes
 //
 //  Created by Aleksandr Bolotov on 13.07.2022.

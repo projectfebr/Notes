@@ -1,9 +1,8 @@
 //
 //  TabledContentCollectionViewDelegate.swift
-//  CustomCollectionLayout
+//  Notes
 //
-//  Created by Maksym Husar on 2/16/19.
-//  Copyright © 2019 MaksymHusar. All rights reserved.
+//  Created by Aleksandr Bolotov on 13.07.2022.
 //
 
 import UIKit
