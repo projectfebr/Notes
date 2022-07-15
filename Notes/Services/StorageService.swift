@@ -6,7 +6,36 @@
 //
 
 import Foundation
+import CoreData
 
 class StorageService {
-    
+    static func save(note: Note){
+        let context = CoreDataService.shared.persistentContainer.viewContext
+        let noteEntity = NoteEntity(context: context)
+        noteEntity.date = note.date
+        if let imageData = note.image?.jpegData(compressionQuality: 1) {
+            noteEntity.image = imageData
+        }
+        noteEntity.text = note.text
+
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
+    static func fetch() throws -> [NoteEntity]{
+        let context = CoreDataService.shared.persistentContainer.viewContext
+        let fetchRequest =
+        NSFetchRequest<NoteEntity>(entityName: "NoteEntity")
+
+        do {
+            let notes = try context.fetch(fetchRequest)
+            return notes
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return [NoteEntity]()
+        }
+    }
 }

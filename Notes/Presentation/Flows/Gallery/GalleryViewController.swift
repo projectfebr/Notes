@@ -23,23 +23,16 @@ class GalleryViewController: UIViewController {
         }
     }
 
-    private var styleDelegates: [PresentationStyle: CollectionViewSelectableItemDelegate] = {
-        let result: [PresentationStyle: CollectionViewSelectableItemDelegate] = [
+    private var styleDelegates: [PresentationStyle: DefaultCollectionViewDelegate] = {
+        let result: [PresentationStyle: DefaultCollectionViewDelegate] = [
             .table: TabledContentCollectionViewDelegate(),
             .defaultGrid: DefaultGriddedContentCollectionViewDelegate(),
             .customGrid: CustomGriddedContentCollectionViewDelegate(),
         ]
-        result.values.forEach {
-            $0.didSelectItem = { _ in
-                print("Item selected")
-            }
-        }
         return result
     }()
 
-    private var datasource: [Dog] = DogsProvider.get()
-
-    var notes: [NSManagedObject] = []
+    var notes: [Note] = []
 
     private var selectedStyle: PresentationStyle = .table {
         didSet { updatePresentationStyle() }
@@ -54,29 +47,26 @@ class GalleryViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-
-      //1
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else { return }
-
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
-
-      //2
-      let fetchRequest =
-        NSFetchRequest<NSManagedObject>(entityName: "NoteEntity")
-
-      //3
-      do {
-        notes = try managedContext.fetch(fetchRequest)
-          collectionView.reloadData()
-      } catch let error as NSError {
-        print("Could not fetch. \(error), \(error.userInfo)")
-      }
+        super.viewWillAppear(animated)
+        do {
+            let noteEntity = try StorageService.fetch()
+            let notesList = noteEntity.map({ entity in
+                Note.fromNoteEntity(entity)
+            })
+            notes = notesList.filter({$0 != nil}) as! [Note]
+            collectionView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
 
     private func setupCollectionView() {
+        styleDelegates.values.forEach {
+                $0.didSelectItem = { [unowned self] indexPath in
+                    let vc = NoteViewController(note: self.notes[indexPath.row], nibName: NoteViewController.nibName)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         collectionView.delegate = styleDelegates[selectedStyle]
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -100,6 +90,7 @@ class GalleryViewController: UIViewController {
     }
 }
 
+// MARK: Implements UICollectionViewDataSource
 extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return notes.count
@@ -108,9 +99,7 @@ extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseID, for: indexPath) as! CollectionViewCell
         let note = notes[indexPath.row]
-        let image = UIImage(data: note.value(forKey: "image") as! Data)
-        let date = note.value(forKey: "date") as! Date
-        cell.update(date: date, image: image)
+        cell.update(date: note.date, image: note.image)
         return cell
     }
 }

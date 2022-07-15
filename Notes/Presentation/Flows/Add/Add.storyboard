@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" restorationIdentifier="Text" translatesAutoresizingMaskIntoConstraints="NO" id="NIL-jf-JVu">
                                 <rect key="frame" x="20" y="44" width="374" height="389"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Нажмите &quot;Начать запись&quot; и говорите" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THi-qG-9CQ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THi-qG-9CQ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="348"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>

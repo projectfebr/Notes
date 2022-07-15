@@ -11,6 +11,10 @@
 		1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB925287DA5940025ECBF /* ImagePicker.swift */; };
 		1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */; };
 		1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */; };
+		1F6CDF3428815B91001FDA33 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CDF3228815B91001FDA33 /* NoteViewController.swift */; };
+		1F6CDF3528815B91001FDA33 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CDF3328815B91001FDA33 /* NoteViewController.xib */; };
+		1F6CDF382881944C001FDA33 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CDF372881944C001FDA33 /* DateExtension.swift */; };
+		1F6CDF3A28819AF2001FDA33 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CDF3928819AF2001FDA33 /* CoreDataService.swift */; };
 		1FAF227A2859222B0010227D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF22792859222B0010227D /* AppDelegate.swift */; };
 		1FAF227C2859222B0010227D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF227B2859222B0010227D /* SceneDelegate.swift */; };
 		1FAF22812859222B0010227D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAF227F2859222B0010227D /* Main.storyboard */; };
@@ -22,8 +26,6 @@
 		1FF6A326288019830022C16B /* TabledContentCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A325288019830022C16B /* TabledContentCollectionViewDelegate.swift */; };
 		1FF6A3282880198C0022C16B /* DefaultGriddedContentCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A3272880198C0022C16B /* DefaultGriddedContentCollectionViewDelegate.swift */; };
 		1FF6A32A288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A329288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift */; };
-		1FF6A32F28802D760022C16B /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A32D28802D760022C16B /* Dog.swift */; };
-		1FF6A33028802D760022C16B /* DogsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A32E28802D760022C16B /* DogsProvider.swift */; };
 		1FF6A332288048460022C16B /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6A331288048460022C16B /* Gallery.storyboard */; };
 		1FF6A334288048910022C16B /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6A333288048910022C16B /* Add.storyboard */; };
 		1FF6A336288068510022C16B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6A335288068510022C16B /* Note.swift */; };
@@ -35,6 +37,10 @@
 		1F4BB925287DA5940025ECBF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		1F6CDF3228815B91001FDA33 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		1F6CDF3328815B91001FDA33 /* NoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
+		1F6CDF372881944C001FDA33 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		1F6CDF3928819AF2001FDA33 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		1FAF22762859222B0010227D /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAF22792859222B0010227D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FAF227B2859222B0010227D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,8 +54,6 @@
 		1FF6A325288019830022C16B /* TabledContentCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabledContentCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		1FF6A3272880198C0022C16B /* DefaultGriddedContentCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultGriddedContentCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		1FF6A329288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGriddedContentCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		1FF6A32D28802D760022C16B /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
-		1FF6A32E28802D760022C16B /* DogsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsProvider.swift; sourceTree = "<group>"; };
 		1FF6A331288048460022C16B /* Gallery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gallery.storyboard; sourceTree = "<group>"; };
 		1FF6A333288048910022C16B /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		1FF6A335288068510022C16B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -84,6 +88,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		1F6CDF3128815B4D001FDA33 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				1F6CDF3228815B91001FDA33 /* NoteViewController.swift */,
+				1F6CDF3328815B91001FDA33 /* NoteViewController.xib */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		1F6CDF3628819418001FDA33 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1F6CDF372881944C001FDA33 /* DateExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1F865AF12861C12C00906522 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +119,7 @@
 			children = (
 				1FF6A331288048460022C16B /* Gallery.storyboard */,
 				1F2A19C9287ECFF100923847 /* GalleryViewController.swift */,
+				1F6CDF3128815B4D001FDA33 /* Note */,
 				1FF6A32B288019A30022C16B /* GalleryCollectionFlowLayouts */,
 				1F4BB930287EB5BF0025ECBF /* Cell */,
 			);
@@ -135,6 +157,7 @@
 				1FF6A33B2880A86D0022C16B /* Services */,
 				1FF6A32C28802D760022C16B /* Entities */,
 				1FAF228F2859229A0010227D /* Presentation */,
+				1F6CDF3628819418001FDA33 /* Utils */,
 				1FAF228E285922740010227D /* Resources */,
 				1FAF22872859222C0010227D /* Info.plist */,
 			);
@@ -162,9 +185,9 @@
 		1FAF228F2859229A0010227D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1FAF2290285922A40010227D /* Flows */,
 				1F4BB927287DA6A00025ECBF /* Views */,
 				1FAF227F2859222B0010227D /* Main.storyboard */,
-				1FAF2290285922A40010227D /* Flows */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -193,8 +216,6 @@
 		1FF6A32C28802D760022C16B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				1FF6A32D28802D760022C16B /* Dog.swift */,
-				1FF6A32E28802D760022C16B /* DogsProvider.swift */,
 				1FF6A335288068510022C16B /* Note.swift */,
 			);
 			path = Entities;
@@ -204,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF6A338288068EC0022C16B /* NotesStorage.xcdatamodeld */,
+				1F6CDF3928819AF2001FDA33 /* CoreDataService.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -276,6 +298,7 @@
 			files = (
 				1FF6A332288048460022C16B /* Gallery.storyboard in Resources */,
 				1FAF22862859222C0010227D /* LaunchScreen.storyboard in Resources */,
+				1F6CDF3528815B91001FDA33 /* NoteViewController.xib in Resources */,
 				1FAF22832859222C0010227D /* Assets.xcassets in Resources */,
 				1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */,
 				1FF6A334288048910022C16B /* Add.storyboard in Resources */,
@@ -290,20 +313,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FF6A32F28802D760022C16B /* Dog.swift in Sources */,
-				1FF6A33028802D760022C16B /* DogsProvider.swift in Sources */,
 				1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */,
 				1F2A19CA287ECFF100923847 /* GalleryViewController.swift in Sources */,
 				1FF6A326288019830022C16B /* TabledContentCollectionViewDelegate.swift in Sources */,
 				1FF6A336288068510022C16B /* Note.swift in Sources */,
 				1FAF227A2859222B0010227D /* AppDelegate.swift in Sources */,
+				1F6CDF382881944C001FDA33 /* DateExtension.swift in Sources */,
 				1FF6A33A288068EC0022C16B /* NotesStorage.xcdatamodeld in Sources */,
 				1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */,
+				1F6CDF3428815B91001FDA33 /* NoteViewController.swift in Sources */,
 				1FF6A32A288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift in Sources */,
 				1FB8D0012880A911007B7AA2 /* StorageService.swift in Sources */,
 				1FF6A3242880197C0022C16B /* DefaultCollectionViewDelegate.swift in Sources */,
 				1FAF227C2859222B0010227D /* SceneDelegate.swift in Sources */,
 				1FCEA0DB2874CC2E00D5A4CB /* AddViewController.swift in Sources */,
+				1F6CDF3A28819AF2001FDA33 /* CoreDataService.swift in Sources */,
 				1FF6A3282880198C0022C16B /* DefaultGriddedContentCollectionViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
