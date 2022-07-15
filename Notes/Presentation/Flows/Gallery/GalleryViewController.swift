@@ -48,12 +48,16 @@ class GalleryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchNotes()
+    }
+
+    private func fetchNotes() {
         do {
             let noteEntity = try StorageService.fetch()
             let notesList = noteEntity.map({ entity in
                 Note.fromNoteEntity(entity)
             })
-            notes = notesList.filter({$0 != nil}) as! [Note]
+            notes = notesList.compactMap({$0})
             collectionView.reloadData()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")

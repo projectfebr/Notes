@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class StorageService {
-    static func save(note: Note){
+    static func save(note: Note) {
         let context = CoreDataService.shared.persistentContainer.viewContext
         let noteEntity = NoteEntity(context: context)
         noteEntity.date = note.date
@@ -25,7 +25,7 @@ class StorageService {
         }
     }
 
-    static func fetch() throws -> [NoteEntity]{
+    static func fetch() throws -> [NoteEntity] {
         let context = CoreDataService.shared.persistentContainer.viewContext
         let fetchRequest =
         NSFetchRequest<NoteEntity>(entityName: "NoteEntity")

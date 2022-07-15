@@ -18,20 +18,17 @@ class NoteViewController: UIViewController {
             imageView.contentMode = .scaleAspectFill
         }
     }
-    @IBOutlet weak var dateLabel: UILabel!
-        {
-            didSet {
-                dateLabel.text = ""
-            }
+    @IBOutlet weak var dateLabel: UILabel! {
+        didSet {
+            dateLabel.text = ""
         }
-    @IBOutlet weak var timeLabel: UILabel!
-    {
+    }
+    @IBOutlet weak var timeLabel: UILabel! {
         didSet {
             timeLabel.text = ""
         }
     }
-    @IBOutlet weak var textLabel: UILabel!
-    {
+    @IBOutlet weak var textLabel: UILabel! {
         didSet {
             textLabel.text = ""
         }
