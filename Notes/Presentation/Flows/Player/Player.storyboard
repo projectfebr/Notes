@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lzq-hn-4wp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Play-->
+        <scene sceneID="avp-Z8-DpT">
+            <objects>
+                <viewController title="Play" id="Lzq-hn-4wp" customClass="PlayerViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Od-DX-9Ol">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="dsD-Oi-Yqf">
+                                <rect key="frame" x="118" y="407" width="178.5" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aO2-Gc-3qO">
+                                        <rect key="frame" x="0.0" y="0.0" width="178.5" height="37"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-bP-5kD">
+                                        <rect key="frame" x="0.0" y="51" width="178.5" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-dX-F19">
+                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="pause" catalog="system"/>
+                                                <connections>
+                                                    <action selector="pauseButtonTap:" destination="Lzq-hn-4wp" eventType="touchUpInside" id="Qua-fO-fiv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASH-Ib-e4r">
+                                                <rect key="frame" x="65.5" y="0.0" width="40.5" height="31"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="play" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="play" catalog="system"/>
+                                                <connections>
+                                                    <action selector="playButtonTap:" destination="Lzq-hn-4wp" eventType="touchUpInside" id="5iX-RD-Cfs"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4l-3A-boN">
+                                                <rect key="frame" x="135" y="0.0" width="43.5" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="stop" catalog="system"/>
+                                                <connections>
+                                                    <action selector="stopButtonTap:" destination="Lzq-hn-4wp" eventType="touchUpInside" id="RMD-va-rHc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KKo-4x-np9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dsD-Oi-Yqf" firstAttribute="centerY" secondItem="3Od-DX-9Ol" secondAttribute="centerY" id="UL1-1j-7gv"/>
+                            <constraint firstItem="dsD-Oi-Yqf" firstAttribute="centerX" secondItem="3Od-DX-9Ol" secondAttribute="centerX" id="b3B-jz-gXd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Player" id="erC-cw-HeK"/>
+                    <connections>
+                        <outlet property="pauseButton" destination="s1d-dX-F19" id="jK7-Rl-2sI"/>
+                        <outlet property="playButton" destination="ASH-Ib-e4r" id="uOs-ha-vUU"/>
+                        <outlet property="stopButton" destination="o4l-3A-boN" id="vhi-bK-n4P"/>
+                        <outlet property="timeLabel" destination="aO2-Gc-3qO" id="hFN-M5-G4e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9SW-qe-wr3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="1219"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pause" catalog="system" width="88" height="128"/>
+        <image name="play" catalog="system" width="120" height="128"/>
+        <image name="stop" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -4,39 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Play-->
-        <scene sceneID="avp-Z8-DpT">
-            <objects>
-                <viewController title="Play" id="Lzq-hn-4wp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Od-DX-9Ol">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0R0-nN-8FF">
-                                <rect key="frame" x="0.0" y="100.33333333333331" width="390" height="649.66666666666674"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="150"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="KKo-4x-np9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="KKo-4x-np9" firstAttribute="trailing" secondItem="0R0-nN-8FF" secondAttribute="trailing" id="61H-Sw-wsV"/>
-                            <constraint firstItem="0R0-nN-8FF" firstAttribute="top" secondItem="KKo-4x-np9" secondAttribute="top" id="fcJ-Ot-UH6"/>
-                            <constraint firstItem="0R0-nN-8FF" firstAttribute="leading" secondItem="KKo-4x-np9" secondAttribute="leading" id="qlf-W0-Olv"/>
-                            <constraint firstItem="KKo-4x-np9" firstAttribute="bottom" secondItem="0R0-nN-8FF" secondAttribute="bottom" id="scI-RE-39P"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Player" id="erC-cw-HeK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9SW-qe-wr3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="635" y="1219"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NSu-Yq-hdb">
             <objects>
@@ -68,7 +38,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Lzq-hn-4wp" kind="relationship" relationship="rootViewController" id="p2o-KS-jWd"/>
+                        <segue destination="au9-Hg-TmP" kind="relationship" relationship="rootViewController" id="p2o-KS-jWd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2r-1H-Wp3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -133,13 +103,20 @@
             </objects>
             <point key="canvasLocation" x="-810.76923076923072" y="1217.0616113744074"/>
         </scene>
+        <!--Player-->
+        <scene sceneID="aZ5-uD-1kQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Player" id="au9-Hg-TmP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MY6-gW-vkF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NT1-Lp-p7x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="1219"/>
+        </scene>
     </scenes>
     <resources>
         <image name="play.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

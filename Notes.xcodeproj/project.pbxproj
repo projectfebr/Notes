@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F2A19CA287ECFF100923847 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A19C9287ECFF100923847 /* GalleryViewController.swift */; };
+		1F3F2C1D2883DDB400BBBE91 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C1C2883DDB400BBBE91 /* TimerService.swift */; };
+		1F3F2C1F2883DE4200BBBE91 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */; };
+		1F3F2C212883DE5D00BBBE91 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */; };
 		1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB925287DA5940025ECBF /* ImagePicker.swift */; };
 		1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */; };
 		1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		1F2A19C9287ECFF100923847 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		1F3F2C1C2883DDB400BBBE91 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1F4BB925287DA5940025ECBF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 		1F865AF32861C13B00906522 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */,
+				1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB8D0002880A911007B7AA2 /* StorageService.swift */,
+				1F3F2C1C2883DDB400BBBE91 /* TimerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -301,6 +310,7 @@
 				1F6CDF3528815B91001FDA33 /* NoteViewController.xib in Resources */,
 				1FAF22832859222C0010227D /* Assets.xcassets in Resources */,
 				1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */,
+				1F3F2C1F2883DE4200BBBE91 /* Player.storyboard in Resources */,
 				1FF6A334288048910022C16B /* Add.storyboard in Resources */,
 				1FAF22812859222B0010227D /* Main.storyboard in Resources */,
 			);
@@ -318,6 +328,7 @@
 				1FF6A326288019830022C16B /* TabledContentCollectionViewDelegate.swift in Sources */,
 				1FF6A336288068510022C16B /* Note.swift in Sources */,
 				1FAF227A2859222B0010227D /* AppDelegate.swift in Sources */,
+				1F3F2C212883DE5D00BBBE91 /* PlayerViewController.swift in Sources */,
 				1F6CDF382881944C001FDA33 /* DateExtension.swift in Sources */,
 				1FF6A33A288068EC0022C16B /* NotesStorage.xcdatamodeld in Sources */,
 				1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */,
@@ -325,6 +336,7 @@
 				1FF6A32A288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift in Sources */,
 				1FB8D0012880A911007B7AA2 /* StorageService.swift in Sources */,
 				1FF6A3242880197C0022C16B /* DefaultCollectionViewDelegate.swift in Sources */,
+				1F3F2C1D2883DDB400BBBE91 /* TimerService.swift in Sources */,
 				1FAF227C2859222B0010227D /* SceneDelegate.swift in Sources */,
 				1FCEA0DB2874CC2E00D5A4CB /* AddViewController.swift in Sources */,
 				1F6CDF3A28819AF2001FDA33 /* CoreDataService.swift in Sources */,
