@@ -10,6 +10,13 @@ import Speech
 import CoreData
 
 class AddViewController: UIViewController {
+    enum Constants {
+        static let alertSuccesTitle = "Выполнено"
+        static let alertSuccesMessage = "Заметка создана"
+        static let alertFailureTitle = "Ошибка"
+        static let alertFailureMessage = "Не удалось создать заметку"
+    }
+
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -48,9 +55,20 @@ class AddViewController: UIViewController {
         imagePicker.present(from: sender)
     }
 
-    @objc func saveNote(){
+    @objc func saveNote() {
         let note = Note(image: imageView.image, date: Date(), text: textView.text)
-        StorageService.save(note: note)
+        do {
+            try StorageService.save(note: note)
+            showInfoAlert(with: Constants.alertSuccesTitle, with: Constants.alertSuccesMessage)
+        } catch {
+            showInfoAlert(with: Constants.alertFailureTitle, with: Constants.alertFailureMessage)
+        }
+    }
+
+    private func showInfoAlert(with title: String, with mesasage: String) {
+        let alert = UIAlertController(title: title, message: mesasage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 
     private func setupSpeechRecognizer() {
