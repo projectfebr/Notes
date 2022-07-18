@@ -7,8 +7,16 @@
 
 import UIKit
 import Speech
+import CoreData
 
 class AddViewController: UIViewController {
+    enum Constants {
+        static let alertSuccesTitle = "Выполнено"
+        static let alertSuccesMessage = "Заметка создана"
+        static let alertFailureTitle = "Ошибка"
+        static let alertFailureMessage = "Не удалось создать заметку"
+    }
+
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -23,10 +31,12 @@ class AddViewController: UIViewController {
     }
     @IBOutlet weak var imageView: UIImageView!
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSpeechRecognizer()
         imagePicker = ImagePicker(presentationController: self, delegate: self)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Создать", style: .plain, target: self, action: #selector(saveNote))
     }
 
     @IBAction func onTapRecordButton(_ sender: Any) {
@@ -43,6 +53,22 @@ class AddViewController: UIViewController {
 
     @IBAction func onTapImageButton(_ sender: UIButton) {
         imagePicker.present(from: sender)
+    }
+
+    @objc func saveNote() {
+        let note = Note(image: imageView.image, date: Date(), text: textView.text)
+        do {
+            try StorageService.save(note: note)
+            showInfoAlert(with: Constants.alertSuccesTitle, with: Constants.alertSuccesMessage)
+        } catch {
+            showInfoAlert(with: Constants.alertFailureTitle, with: Constants.alertFailureMessage)
+        }
+    }
+
+    private func showInfoAlert(with title: String, with mesasage: String) {
+        let alert = UIAlertController(title: title, message: mesasage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 
     private func setupSpeechRecognizer() {
@@ -130,12 +156,14 @@ class AddViewController: UIViewController {
     }
 }
 
+//MARK: Implements SFSpeechRecognizerDelegate
 extension AddViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         recordButton.isEnabled = available
     }
 }
 
+//MARK: Implements ImagePickerDelegate
 extension AddViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         imageView.image = image
