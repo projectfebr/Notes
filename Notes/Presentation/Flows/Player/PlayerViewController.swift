@@ -53,7 +53,6 @@ class PlayerViewController: UIViewController {
 
     @IBAction func stopButtonTap(_ sender: Any) {
         timerService.stopTimer()
-
     }
 
     private func setTimeLabel(time: Int) {
