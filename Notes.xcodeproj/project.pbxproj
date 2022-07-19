@@ -11,6 +11,7 @@
 		1F3F2C1D2883DDB400BBBE91 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C1C2883DDB400BBBE91 /* TimerService.swift */; };
 		1F3F2C1F2883DE4200BBBE91 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */; };
 		1F3F2C212883DE5D00BBBE91 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */; };
+		1F3F2C252886F2AB00BBBE91 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C242886F2AB00BBBE91 /* CustomProgressView.swift */; };
 		1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB925287DA5940025ECBF /* ImagePicker.swift */; };
 		1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */; };
 		1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */; };
@@ -40,6 +41,7 @@
 		1F3F2C1C2883DDB400BBBE91 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1F3F2C242886F2AB00BBBE91 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		1F4BB925287DA5940025ECBF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4BB925287DA5940025ECBF /* ImagePicker.swift */,
+				1F3F2C242886F2AB00BBBE91 /* CustomProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				1F3F2C1D2883DDB400BBBE91 /* TimerService.swift in Sources */,
 				1FAF227C2859222B0010227D /* SceneDelegate.swift in Sources */,
 				1FCEA0DB2874CC2E00D5A4CB /* AddViewController.swift in Sources */,
+				1F3F2C252886F2AB00BBBE91 /* CustomProgressView.swift in Sources */,
 				1F6CDF3A28819AF2001FDA33 /* CoreDataService.swift in Sources */,
 				1FF6A3282880198C0022C16B /* DefaultGriddedContentCollectionViewDelegate.swift in Sources */,
 			);

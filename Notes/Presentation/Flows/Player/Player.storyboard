@@ -18,27 +18,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="dsD-Oi-Yqf">
-                                <rect key="frame" x="118" y="407" width="178.5" height="82"/>
+                                <rect key="frame" x="78" y="398" width="258" height="100"/>
                                 <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="1TA-mS-yA4" customClass="CustomProgressView" customModule="Notes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="4"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="heightScale">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aO2-Gc-3qO">
-                                        <rect key="frame" x="0.0" y="0.0" width="178.5" height="37"/>
+                                        <rect key="frame" x="0.0" y="18" width="258" height="37"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-bP-5kD">
-                                        <rect key="frame" x="0.0" y="51" width="178.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="69" width="258" height="31"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-dX-F19">
-                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="31"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNq-v5-Ohr">
+                                                <rect key="frame" x="0.0" y="0.0" width="116" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" image="pause" catalog="system"/>
                                                 <connections>
-                                                    <action selector="pauseButtonTap:" destination="Lzq-hn-4wp" eventType="touchUpInside" id="Qua-fO-fiv"/>
+                                                    <action selector="pauseButtonTap:" destination="Lzq-hn-4wp" eventType="touchUpInside" id="Ahq-rx-EeD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASH-Ib-e4r">
-                                                <rect key="frame" x="65.5" y="0.0" width="40.5" height="31"/>
+                                                <rect key="frame" x="145" y="0.0" width="40.5" height="31"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="play" catalog="system"/>
                                                 <buttonConfiguration key="configuration" style="filled" image="play" catalog="system"/>
@@ -47,7 +58,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4l-3A-boN">
-                                                <rect key="frame" x="135" y="0.0" width="43.5" height="31"/>
+                                                <rect key="frame" x="214.5" y="0.0" width="43.5" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" image="stop" catalog="system"/>
                                                 <connections>
@@ -68,17 +79,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="Player" id="erC-cw-HeK"/>
                     <connections>
-                        <outlet property="pauseButton" destination="s1d-dX-F19" id="jK7-Rl-2sI"/>
+                        <outlet property="pauseButton" destination="BNq-v5-Ohr" id="vjl-Dd-MoD"/>
                         <outlet property="playButton" destination="ASH-Ib-e4r" id="uOs-ha-vUU"/>
+                        <outlet property="progressView" destination="1TA-mS-yA4" id="FRh-Nk-88P"/>
                         <outlet property="stopButton" destination="o4l-3A-boN" id="vhi-bK-n4P"/>
                         <outlet property="timeLabel" destination="aO2-Gc-3qO" id="hFN-M5-G4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9SW-qe-wr3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635" y="1219"/>
+            <point key="canvasLocation" x="634.78260869565224" y="1218.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="1TA-mS-yA4">
+            <size key="intrinsicContentSize" width="-1" height="4"/>
+        </designable>
+    </designables>
     <resources>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="play" catalog="system" width="120" height="128"/>
