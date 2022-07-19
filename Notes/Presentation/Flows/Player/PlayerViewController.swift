@@ -38,7 +38,7 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         timerService.delegate = self
-        setTimeLabel(time: timerService.time)
+        setTimeLabel(timeRemainingInSeconds: timerService.time)
     }
 
     @IBAction func playButtonTap(_ sender: Any) {
@@ -55,9 +55,9 @@ class PlayerViewController: UIViewController {
         timerService.stopTimer()
     }
 
-    private func setTimeLabel(time: Int) {
-        let minutesLeft = Int(time) / 60 % 60
-        let secondsLeft = Int(time) % 60
+    private func setTimeLabel(timeRemainingInSeconds: Int) {
+        let minutesLeft = Int(timeRemainingInSeconds) / 60 % 60
+        let secondsLeft = Int(timeRemainingInSeconds) % 60
         timeLabel.text = String(format: "%02d", minutesLeft) + ":" + String(format: "%02d", secondsLeft)
     }
 
@@ -81,11 +81,11 @@ class PlayerViewController: UIViewController {
 // MARK: Implements TimerServiceDelegate
 extension PlayerViewController: TimerServiceDelegate {
     func onStopTimer(time: Int) {
-        setTimeLabel(time: time)
+        setTimeLabel(timeRemainingInSeconds: time)
         setupTimerButtons(event: .stop)
     }
 
-    func tick(timeRemainig: Int) {
-        setTimeLabel(time: timeRemainig)
+    func tick(timeRemainingSeconds: Int) {
+        setTimeLabel(timeRemainingInSeconds: timeRemainingSeconds)
     }
 }

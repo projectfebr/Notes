@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TimerServiceDelegate {
-    func tick(timeRemainig: Int)
+    func tick(timeRemainingSeconds: Int)
     func onStopTimer(time: Int)
 }
 
@@ -49,7 +49,7 @@ class TimerService {
         if timeRemaining == -1 {
             stopTimer()
         } else {
-            delegate?.tick(timeRemainig: timeRemaining)
+            delegate?.tick(timeRemainingSeconds: timeRemaining)
         }
     }
 }
