@@ -9,7 +9,6 @@ import UIKit
 
 @IBDesignable
 class CustomProgressView: UIProgressView {
-
     @IBInspectable
     public var cornerRadius: CGFloat = 2 {
         didSet {
