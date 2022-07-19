@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class StorageService {
-    static func save(note: Note) {
+    static func save(note: Note) throws {
         let context = CoreDataService.shared.persistentContainer.viewContext
         let noteEntity = NoteEntity(context: context)
         noteEntity.date = note.date
@@ -21,7 +21,7 @@ class StorageService {
         do {
             try context.save()
         } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            throw error
         }
     }
 
@@ -34,8 +34,7 @@ class StorageService {
             let notes = try context.fetch(fetchRequest)
             return notes
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return [NoteEntity]()
+            throw error
         }
     }
 }
