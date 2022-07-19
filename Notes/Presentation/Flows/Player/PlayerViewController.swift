@@ -8,9 +8,7 @@
 import UIKit
 
 class PlayerViewController: UIViewController {
-    var timerIsOn = false
-    var timer = Timer()
-    var timeRemaining = 1500
+    private let timerService = TimerService()
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var playButton: UIButton! {
@@ -28,35 +26,38 @@ class PlayerViewController: UIViewController {
             stopButton.setTitle("", for: .normal)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel.text = "60:00"
+        timerService.delegate = self
+        setTimeLabel(timeRemainig: timerService.time)
     }
 
     @IBAction func playButtonTap(_ sender: Any) {
-        if !timerIsOn {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,      selector: #selector(timerRunning), userInfo: nil, repeats: true)
-        }
-        timerIsOn = true
+        timerService.startTimer()
+        playButton.isEnabled = false
     }
 
     @IBAction func pauseButtonTap(_ sender: Any) {
-        timer.invalidate()
-        timerIsOn = false
+        timerService.pauseTimer()
+        playButton.isEnabled = true
     }
 
     @IBAction func stopButtonTap(_ sender: Any) {
-        timer.invalidate()
-        timeRemaining = 1500
-        timeLabel.text = "25:00"
-        timerIsOn = false
+        timerService.stopTimer()
+        playButton.isEnabled = true
     }
 
-    @objc func timerRunning() {
-        timeRemaining -= 1
-        let minutesLeft = Int(timeRemaining) / 60 % 60
-        let secondsLeft = Int(timeRemaining) % 60
-        timeLabel.text = "\(minutesLeft):\(secondsLeft)"
+    private func setTimeLabel(timeRemainig: Int) {
+        let minutesLeft = Int(timeRemainig) / 60 % 60
+        let secondsLeft = Int(timeRemainig) % 60
+        timeLabel.text = String(format: "%02d", minutesLeft) + ":" + String(format: "%02d", secondsLeft)
+    }
+}
+
+// MARK: Implements TimerServiceDelegate
+extension PlayerViewController: TimerServiceDelegate {
+    func tick(timeRemainig: Int) {
+        setTimeLabel(timeRemainig: timeRemainig)
     }
 }
