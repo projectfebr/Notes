@@ -25,7 +25,6 @@ class TimerService {
     }
 
     func startTimer() {
-        print("start timer")
         if !timerIsOn {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
             timerIsOn = true
