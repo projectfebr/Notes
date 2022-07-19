@@ -44,14 +44,6 @@ class TimerService {
         delegate?.tick(timeRemainig: timeRemaining)
     }
 
-    func getTime() {
-        print("get time")
-    }
-
-    func setSheduler() {
-        print("set sheduler")
-    }
-
     @objc func timerRunning() {
         timeRemaining -= 1
         if timeRemaining == 0 {
