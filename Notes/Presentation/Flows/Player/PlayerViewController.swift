@@ -17,23 +17,9 @@ class PlayerViewController: UIViewController {
     private let timerService = TimerService()
 
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton! {
-        didSet {
-            playButton.setTitle("", for: .normal)
-        }
-    }
-    @IBOutlet weak var pauseButton: UIButton! {
-        didSet {
-            pauseButton.setTitle("", for: .normal)
-            pauseButton.isEnabled = false
-        }
-    }
-    @IBOutlet weak var stopButton: UIButton! {
-        didSet {
-            stopButton.setTitle("", for: .normal)
-            stopButton.isEnabled = false
-        }
-    }
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
