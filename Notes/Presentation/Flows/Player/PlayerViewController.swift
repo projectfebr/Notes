@@ -16,10 +16,25 @@ class PlayerViewController: UIViewController {
 
     private let timerService = TimerService()
 
+    @IBOutlet weak var progressView: CustomProgressView!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var playButton: UIButton! {
+        didSet {
+            playButton.setTitle("", for: .normal)
+        }
+    }
+    @IBOutlet weak var pauseButton: UIButton! {
+        didSet {
+            pauseButton.setTitle("", for: .normal)
+            pauseButton.isEnabled = false
+        }
+    }
+    @IBOutlet weak var stopButton: UIButton! {
+        didSet {
+            stopButton.setTitle("", for: .normal)
+            stopButton.isEnabled = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +62,11 @@ class PlayerViewController: UIViewController {
         timeLabel.text = String(format: "%02d", minutesLeft) + ":" + String(format: "%02d", secondsLeft)
     }
 
+    private func setProgressView(timeRemainingInSeconds: Int){
+        let progress = Float(timeRemainingInSeconds) / Float(timerService.time)
+        progressView.setProgress(progress, animated: true)
+    }
+
     private func setupTimerButtons(event: TimerEvents) {
         switch event {
         case .start:
@@ -68,10 +88,12 @@ class PlayerViewController: UIViewController {
 extension PlayerViewController: TimerServiceDelegate {
     func onStopTimer(time: Int) {
         setTimeLabel(timeRemainingInSeconds: time)
+        setProgressView(timeRemainingInSeconds: time)
         setupTimerButtons(event: .stop)
     }
 
     func tick(timeRemainingSeconds: Int) {
         setTimeLabel(timeRemainingInSeconds: timeRemainingSeconds)
+        setProgressView(timeRemainingInSeconds: timeRemainingSeconds)
     }
 }
