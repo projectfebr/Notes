@@ -20,9 +20,11 @@ extension TextFormatterProtocol {
 
 class RemoveSpacesTextFormatter: TextFormatterProtocol {
     var onFormatDate: (String?) -> Void
+
     func format(text: String) {
         onFormatDate(text.replacingOccurrences(of: " ", with: ""))
     }
+
     init(onFormatDate: @escaping (String?) -> Void) {
         self.onFormatDate = onFormatDate
     }
@@ -30,9 +32,11 @@ class RemoveSpacesTextFormatter: TextFormatterProtocol {
 
 class RemoveDotsTextFormatter: TextFormatterProtocol {
     var onFormatDate: (String?) -> Void
+
     func format(text: String) {
         onFormatDate(text.replacingOccurrences(of: ".", with: ""))
     }
+
     init(onFormatDate: @escaping (String?) -> Void) {
         self.onFormatDate = onFormatDate
     }
@@ -40,9 +44,11 @@ class RemoveDotsTextFormatter: TextFormatterProtocol {
 
 class RemoveCommasTextFormatter: TextFormatterProtocol {
     var onFormatDate: (String?) -> Void
+
     func format(text: String) {
         onFormatDate(text.replacingOccurrences(of: ",", with: ""))
     }
+
     init(onFormatDate: @escaping (String?) -> Void) {
         self.onFormatDate = onFormatDate
     }
@@ -50,9 +56,11 @@ class RemoveCommasTextFormatter: TextFormatterProtocol {
 
 class BadTextFormatter: TextFormatterProtocol {
     var onFormatDate: (String?) -> Void
+
     func format(text: String) {
         onFormatDate(nil)
     }
+    
     init(onFormatDate: @escaping (String?) -> Void) {
         self.onFormatDate = onFormatDate
     }

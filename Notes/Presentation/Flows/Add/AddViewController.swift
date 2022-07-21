@@ -101,36 +101,9 @@ class AddViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    private func showActionSheetWithFormatOptions() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        actionSheet.addAction(UIAlertAction(title: Constants.removeSpaces, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveSpacesTextFormatter.init(onFormatDate: updateTextView)
-            self.formatTextView()
-        }))
-        actionSheet.addAction(UIAlertAction(title: Constants.removeDots, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveDotsTextFormatter.init(onFormatDate: updateTextView)
-            self.formatTextView()
-        }))
-        actionSheet.addAction(UIAlertAction(title: Constants.removeCommas, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveCommasTextFormatter.init(onFormatDate: updateTextView)
-            self.formatTextView()
-        }))
-        actionSheet.addAction(UIAlertAction(title: Constants.badFormatter, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = BadTextFormatter.init(onFormatDate: updateTextView)
-            self.formatTextView()
-        }))
-        actionSheet.addAction(UIAlertAction(title: Constants.cancel, style: .cancel))
-        self.present(actionSheet, animated: true)
-    }
-
-    private func formatTextView() {
-        textFormatter?.format(text: textView.text)
-    }
-
     private func updateTextView(_ text: String?) {
         guard let text = text else {
-            showInfoAlert(withTitle: "Оiибка форматтера", withMessage: "В onFormateDate пришел nil")
+            showInfoAlert(withTitle: "Внимание", withMessage: "Произошла неизвестная ошибка")
             return
         }
         textView.text = text
@@ -232,5 +205,35 @@ extension AddViewController: SFSpeechRecognizerDelegate {
 extension AddViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         imageView.image = image
+    }
+}
+
+//MARK: Methods for format textView
+extension AddViewController {
+    private func showActionSheetWithFormatOptions() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        actionSheet.addAction(UIAlertAction(title: Constants.removeSpaces, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveSpacesTextFormatter.init(onFormatDate: updateTextView)
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.removeDots, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveDotsTextFormatter.init(onFormatDate: updateTextView)
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.removeCommas, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveCommasTextFormatter.init(onFormatDate: updateTextView)
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.badFormatter, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = BadTextFormatter.init(onFormatDate: updateTextView)
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.cancel, style: .cancel))
+        self.present(actionSheet, animated: true)
+    }
+
+    private func formatTextView() {
+        textFormatter?.format(text: textView.text)
     }
 }
