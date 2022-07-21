@@ -15,6 +15,11 @@ class AddViewController: UIViewController {
         static let alertSuccesMessage = "Заметка создана"
         static let alertFailureTitle = "Ошибка"
         static let alertFailureMessage = "Не удалось создать заметку"
+        static let removeSpaces = "Удалить пробелы"
+        static let removeDots = "Удалить точки"
+        static let removeCommas = "Удалить запятые"
+        static let ok = "Ок"
+        static let cancel = "Отменить"
     }
 
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
@@ -22,6 +27,7 @@ class AddViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     private var imagePicker: ImagePicker!
+    private var textFormatter: TextFormatterProtocol?
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var recordButton: UIButton! {
@@ -31,12 +37,33 @@ class AddViewController: UIViewController {
     }
     @IBOutlet weak var imageView: UIImageView!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSpeechRecognizer()
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Создать", style: .plain, target: self, action: #selector(saveNote))
+#if DEBUG
+        textView.text = """
+        Du (du hast, du hast, du hast, du hast).
+        Hast viel geweint (geweint,  geweint,     geweint,  geweint).
+        Im Geist getrennt (getrennt,  getrennt,     getrennt,  getrennt).
+        Im Herz vereint (vereint, vereint, vereint, vereint).
+        Wir (wir sind, wir sind, wir sind, wir sind)
+        Sind schon sehr lang zusammen (ihr seid, ihr seid, ihr seid, ihr seid),
+        Dein Atem kalt (so kalt, so kalt, so kalt, so kalt),
+        Das Herz in Flammen (so heiß, so heiß, so heiß, so heiß).
+        Du (du kannst, du kannst, du kannst, du kannst),
+        Ich (ich weiß, ich weiß, ich weiß, ich weiß),
+        Wir (wir sind, wir sind, wir sind, wir sind),
+        Ihr (ihr bleibt, ihr bleibt, ihr bleibt, ihr bleibt).
+
+        Deutschland! Mein Herz in Flammen,
+        Will dich lieben und verdammen.
+        Deutschland! Dein Atem kalt,
+        So jung, und doch so alt.
+        Deutschland!
+        """
+#endif
     }
 
     @IBAction func onTapRecordButton(_ sender: Any) {
@@ -50,7 +77,9 @@ class AddViewController: UIViewController {
             recordButton.setTitle("Остановить запись", for: .normal)
         }
     }
-
+    @IBAction func onTapFormatButton(_ sender: Any) {
+        showActionSheetWithFormatOptions()
+    }
     @IBAction func onTapImageButton(_ sender: UIButton) {
         imagePicker.present(from: sender)
     }
@@ -67,8 +96,31 @@ class AddViewController: UIViewController {
 
     private func showInfoAlert(with title: String, with mesasage: String) {
         let alert = UIAlertController(title: title, message: mesasage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: Constants.ok, style: .default))
         self.present(alert, animated: true)
+    }
+
+    private func showActionSheetWithFormatOptions() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: Constants.removeSpaces, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveSpacesTextFormatter()
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.removeDots, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveDotsTextFormatter()
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.removeCommas, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = RemoveCommasTextFormatter()
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.cancel, style: .cancel))
+        self.present(actionSheet, animated: true)
+    }
+
+    private func formatTextView() {
+        guard let formatter = textFormatter else { return }
+        textView.text = formatter.format(text: textView.text)
     }
 
     private func setupSpeechRecognizer() {
