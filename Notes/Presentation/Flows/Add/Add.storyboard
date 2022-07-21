@@ -21,30 +21,43 @@
                                 <rect key="frame" x="20" y="44" width="374" height="389"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="THi-qG-9CQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="348"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="338"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-gz-JKf">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UW6-PL-FED">
                                         <rect key="frame" x="20" y="358" width="334" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Начать запись"/>
-                                        <connections>
-                                            <action selector="onTapRecordButton:" destination="cmC-yO-pic" eventType="touchUpInside" id="4ef-rT-Wro"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-gz-JKf">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Начать запись"/>
+                                                <connections>
+                                                    <action selector="onTapRecordButton:" destination="cmC-yO-pic" eventType="touchUpInside" id="4ef-rT-Wro"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elt-RX-SQO">
+                                                <rect key="frame" x="167" y="0.0" width="167" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Форматировать"/>
+                                                <connections>
+                                                    <action selector="onTapFormatButton:" destination="cmC-yO-pic" eventType="touchUpInside" id="rzj-6j-sF1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="THi-qG-9CQ" secondAttribute="trailing" id="1PS-OY-5k2"/>
+                                    <constraint firstItem="UW6-PL-FED" firstAttribute="top" secondItem="THi-qG-9CQ" secondAttribute="bottom" constant="20" id="7Xp-je-gce"/>
                                     <constraint firstItem="THi-qG-9CQ" firstAttribute="top" secondItem="NIL-jf-JVu" secondAttribute="top" id="F6h-nE-Kfk"/>
-                                    <constraint firstItem="S8u-gz-JKf" firstAttribute="leading" secondItem="NIL-jf-JVu" secondAttribute="leading" constant="20" id="Loa-XR-hiH"/>
-                                    <constraint firstItem="S8u-gz-JKf" firstAttribute="top" secondItem="THi-qG-9CQ" secondAttribute="bottom" constant="10" id="aN3-kH-qAh"/>
+                                    <constraint firstAttribute="trailing" secondItem="UW6-PL-FED" secondAttribute="trailing" constant="20" id="Yme-OE-Mfy"/>
+                                    <constraint firstItem="UW6-PL-FED" firstAttribute="leading" secondItem="NIL-jf-JVu" secondAttribute="leading" constant="20" id="bEG-GW-Pwg"/>
+                                    <constraint firstAttribute="bottom" secondItem="UW6-PL-FED" secondAttribute="bottom" id="brC-M0-XYF"/>
                                     <constraint firstItem="THi-qG-9CQ" firstAttribute="leading" secondItem="NIL-jf-JVu" secondAttribute="leading" id="cbM-fn-1DI"/>
-                                    <constraint firstAttribute="bottom" secondItem="S8u-gz-JKf" secondAttribute="bottom" id="fht-Cf-gcP"/>
-                                    <constraint firstAttribute="trailing" secondItem="S8u-gz-JKf" secondAttribute="trailing" constant="20" id="gJR-wT-urh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" restorationIdentifier="Image" translatesAutoresizingMaskIntoConstraints="NO" id="b6W-Cj-Ydi">
@@ -160,7 +173,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

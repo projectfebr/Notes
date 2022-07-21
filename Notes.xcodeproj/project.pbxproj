@@ -12,6 +12,7 @@
 		1F3F2C1F2883DE4200BBBE91 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */; };
 		1F3F2C212883DE5D00BBBE91 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */; };
 		1F3F2C252886F2AB00BBBE91 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C242886F2AB00BBBE91 /* CustomProgressView.swift */; };
+		1F3F2C2828891FB600BBBE91 /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F2C2728891FB600BBBE91 /* TextFormatter.swift */; };
 		1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB925287DA5940025ECBF /* ImagePicker.swift */; };
 		1F4BB933287EB5E60025ECBF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */; };
 		1F4BB934287EB5E60025ECBF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */; };
@@ -42,6 +43,7 @@
 		1F3F2C1E2883DE4200BBBE91 /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		1F3F2C202883DE5D00BBBE91 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1F3F2C242886F2AB00BBBE91 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		1F3F2C2728891FB600BBBE91 /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		1F4BB925287DA5940025ECBF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1F4BB931287EB5E60025ECBF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1F4BB932287EB5E60025ECBF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		1F6CDF3628819418001FDA33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1F3F2C2728891FB600BBBE91 /* TextFormatter.swift */,
 				1F6CDF372881944C001FDA33 /* DateExtension.swift */,
 			);
 			path = Utils;
@@ -335,6 +338,7 @@
 				1F6CDF382881944C001FDA33 /* DateExtension.swift in Sources */,
 				1FF6A33A288068EC0022C16B /* NotesStorage.xcdatamodeld in Sources */,
 				1F4BB926287DA5940025ECBF /* ImagePicker.swift in Sources */,
+				1F3F2C2828891FB600BBBE91 /* TextFormatter.swift in Sources */,
 				1F6CDF3428815B91001FDA33 /* NoteViewController.swift in Sources */,
 				1FF6A32A288019920022C16B /* CustomGriddedContentCollectionViewDelegate.swift in Sources */,
 				1FB8D0012880A911007B7AA2 /* StorageService.swift in Sources */,
