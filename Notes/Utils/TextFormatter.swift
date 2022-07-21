@@ -8,31 +8,54 @@
 import Foundation
 
 protocol TextFormatterProtocol {
-    func format(text: String) -> String
+    func format(text: String)
+    var onFormatDate: (String?) -> Void { get set }
 }
 
 extension TextFormatterProtocol {
-    func format(text: String) -> String { return text }
-}
-
-enum TextFormatter {
-    case removeSpaces, removeCommas, removeDots
+    func format(text: String) {
+        onFormatDate(text)
+    }
 }
 
 class RemoveSpacesTextFormatter: TextFormatterProtocol {
-    func format(text: String) -> String {
-        return text.replacingOccurrences(of: " ", with: "")
+    var onFormatDate: (String?) -> Void
+    func format(text: String) {
+        onFormatDate(text.replacingOccurrences(of: " ", with: ""))
+    }
+    init(onFormatDate: @escaping (String?) -> Void) {
+        self.onFormatDate = onFormatDate
     }
 }
 
 class RemoveDotsTextFormatter: TextFormatterProtocol {
-    func format(text: String) -> String {
-        return text.replacingOccurrences(of: ".", with: "")
+    var onFormatDate: (String?) -> Void
+    func format(text: String) {
+        onFormatDate(text.replacingOccurrences(of: ".", with: ""))
+    }
+    init(onFormatDate: @escaping (String?) -> Void) {
+        self.onFormatDate = onFormatDate
     }
 }
 
 class RemoveCommasTextFormatter: TextFormatterProtocol {
-    func format(text: String) -> String {
-        return text.replacingOccurrences(of: ",", with: "")
+    var onFormatDate: (String?) -> Void
+    func format(text: String) {
+        onFormatDate(text.replacingOccurrences(of: ",", with: ""))
+    }
+    init(onFormatDate: @escaping (String?) -> Void) {
+        self.onFormatDate = onFormatDate
     }
 }
+
+class BadTextFormatter: TextFormatterProtocol {
+    var onFormatDate: (String?) -> Void
+    func format(text: String) {
+        onFormatDate(nil)
+    }
+    init(onFormatDate: @escaping (String?) -> Void) {
+        self.onFormatDate = onFormatDate
+    }
+}
+
+

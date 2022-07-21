@@ -18,6 +18,7 @@ class AddViewController: UIViewController {
         static let removeSpaces = "Удалить пробелы"
         static let removeDots = "Удалить точки"
         static let removeCommas = "Удалить запятые"
+        static let badFormatter = "Форматтер с nil"
         static let ok = "Ок"
         static let cancel = "Отменить"
     }
@@ -88,13 +89,13 @@ class AddViewController: UIViewController {
         let note = Note(image: imageView.image, date: Date(), text: textView.text)
         do {
             try StorageService.save(note: note)
-            showInfoAlert(with: Constants.alertSuccesTitle, with: Constants.alertSuccesMessage)
+            showInfoAlert(withTitle: Constants.alertSuccesTitle, withMessage: Constants.alertSuccesMessage)
         } catch {
-            showInfoAlert(with: Constants.alertFailureTitle, with: Constants.alertFailureMessage)
+            showInfoAlert(withTitle: Constants.alertFailureTitle, withMessage: Constants.alertFailureMessage)
         }
     }
 
-    private func showInfoAlert(with title: String, with mesasage: String) {
+    private func showInfoAlert(withTitle title: String, withMessage mesasage: String) {
         let alert = UIAlertController(title: title, message: mesasage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Constants.ok, style: .default))
         self.present(alert, animated: true)
@@ -102,16 +103,21 @@ class AddViewController: UIViewController {
 
     private func showActionSheetWithFormatOptions() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
         actionSheet.addAction(UIAlertAction(title: Constants.removeSpaces, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveSpacesTextFormatter()
+            self.textFormatter = RemoveSpacesTextFormatter.init(onFormatDate: updateTextView)
             self.formatTextView()
         }))
         actionSheet.addAction(UIAlertAction(title: Constants.removeDots, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveDotsTextFormatter()
+            self.textFormatter = RemoveDotsTextFormatter.init(onFormatDate: updateTextView)
             self.formatTextView()
         }))
         actionSheet.addAction(UIAlertAction(title: Constants.removeCommas, style: .default, handler: { [unowned self] _ in
-            self.textFormatter = RemoveCommasTextFormatter()
+            self.textFormatter = RemoveCommasTextFormatter.init(onFormatDate: updateTextView)
+            self.formatTextView()
+        }))
+        actionSheet.addAction(UIAlertAction(title: Constants.badFormatter, style: .default, handler: { [unowned self] _ in
+            self.textFormatter = BadTextFormatter.init(onFormatDate: updateTextView)
             self.formatTextView()
         }))
         actionSheet.addAction(UIAlertAction(title: Constants.cancel, style: .cancel))
@@ -119,8 +125,15 @@ class AddViewController: UIViewController {
     }
 
     private func formatTextView() {
-        guard let formatter = textFormatter else { return }
-        textView.text = formatter.format(text: textView.text)
+        textFormatter?.format(text: textView.text)
+    }
+
+    private func updateTextView(_ text: String?) {
+        guard let text = text else {
+            showInfoAlert(withTitle: "Оiибка форматтера", withMessage: "В onFormateDate пришел nil")
+            return
+        }
+        textView.text = text
     }
 
     private func setupSpeechRecognizer() {
