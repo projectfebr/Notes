@@ -128,6 +128,13 @@ class AddViewController: UIViewController {
             }
         }
     }
+}
+
+//MARK: Implements SFSpeechRecognizerDelegate, methods for SpeechRecgnizer
+extension AddViewController: SFSpeechRecognizerDelegate {
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        recordButton.isEnabled = available
+    }
 
     private func startRecording() {
         if recognitionTask != nil {
@@ -191,13 +198,6 @@ class AddViewController: UIViewController {
         } catch {
             fatalError("AudioEngine не запускается")
         }
-    }
-}
-
-//MARK: Implements SFSpeechRecognizerDelegate
-extension AddViewController: SFSpeechRecognizerDelegate {
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        recordButton.isEnabled = available
     }
 }
 
